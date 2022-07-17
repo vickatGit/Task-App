@@ -3,7 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/android studio/Task/app/src/main/res/layout/activity_main.xml" value="0.27291666666666664" />
+        <entry key="..\:/android studio/Task/app/src/main/res/drawable/clock_hand.xml" value="0.15885416666666666" />
+        <entry key="..\:/android studio/Task/app/src/main/res/layout/activity_main.xml" value="0.22" />
       </map>
     </option>
   </component>
