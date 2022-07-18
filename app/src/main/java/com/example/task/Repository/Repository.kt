@@ -1,15 +1,21 @@
 package com.example.task.Repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.task.Network.NetworkModels.TaskLists
 import com.example.task.Network.RetroHelper
 import com.example.task.Network.TaskRetro
+import okhttp3.RequestBody
 import retrofit2.*
 
 class Repository {
     private lateinit var retro:TaskRetro
-    private lateinit var allTaskLists:MutableLiveData<List<TaskLists>>
+    private val allTaskLists= MutableLiveData<List<TaskLists>>()
+
+    companion object{
+        private val TAG="tag"
+    }
 
 
     constructor(){
@@ -17,10 +23,22 @@ class Repository {
     }
     fun getTaskLists():LiveData<List<TaskLists>>{
         var results:List<TaskLists>
-        results= retro.getTaskLists().body()!!
-        allTaskLists.postValue(results)
-        return allTaskLists
+        Log.d(TAG, "getTaskLists: ")
+        retro.getTaskLists().enqueue(object : Callback<List<TaskLists>>{
+            override fun onResponse(
+                call: Call<List<TaskLists>>,
+                response: Response<List<TaskLists>>
+            ) {
+                allTaskLists.postValue(response.body())
+                Log.d(TAG, "onResponse: "+response.body())
+            }
 
+            override fun onFailure(call: Call<List<TaskLists>>, t: Throwable) {
+                Log.d(TAG, "RESPONSE onFailure: "+t.stackTrace+t.localizedMessage)
+            }
+
+        })
+        return allTaskLists
 
     }
 }

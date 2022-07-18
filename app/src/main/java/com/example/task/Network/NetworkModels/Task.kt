@@ -1,4 +1,4 @@
-package com.example.task
+package com.example.task.Network.NetworkModels
 
 data class Task(
     val description: String,

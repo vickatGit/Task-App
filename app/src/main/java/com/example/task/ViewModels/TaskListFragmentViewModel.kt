@@ -14,4 +14,8 @@ class TaskListFragmentViewModel : ViewModel() {
         allTaskLists= repo.getTaskLists() as MutableLiveData<List<TaskLists>>
     }
 
+    fun getTaskLists():MutableLiveData<List<TaskLists>>{
+        return allTaskLists
+    }
+
 }

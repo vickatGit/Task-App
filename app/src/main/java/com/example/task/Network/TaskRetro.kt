@@ -9,6 +9,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 interface TaskRetro {
-    @GET("/getTaskLists")
-    fun getTaskLists():Response<List<TaskLists>>
+    @GET("getTaskLists")
+    fun getTaskLists():Call<List<TaskLists>>
 }

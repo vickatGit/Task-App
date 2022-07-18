@@ -1,5 +1,6 @@
 package com.example.task.Adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,14 +18,29 @@ class TaskListAdapter(val taskLists:List<TaskLists>) : RecyclerView.Adapter<this
         return thisViewHolder(view)
 
     }
+    companion object{
+        private val TAG="tag"
+    }
 
     override fun onBindViewHolder(holder: thisViewHolder, position: Int) {
-        val currentTaskLists:TaskLists=taskLists.get(position)
+        Log.d(TAG, "onBindViewHolder: ")
+        if(taskLists!=null) {
+            if(taskLists.size>0) {
+                val currentTaskLists: TaskLists = taskLists.get(position)
 
+                    holder.Task.setText(currentTaskLists.name)
+                    Log.d(TAG, "onBindViewHolder: "+currentTaskLists.name)
+            }
+        }
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+
+        if(taskLists!=null) {
+            return taskLists.size
+        }
+        else
+            return 0
     }
 
 }

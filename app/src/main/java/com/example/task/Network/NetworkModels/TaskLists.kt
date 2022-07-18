@@ -1,7 +1,5 @@
 package com.example.task.Network.NetworkModels
 
-import com.example.task.Task
-
 data class TaskLists(
     val active: Boolean,
     val description: String,

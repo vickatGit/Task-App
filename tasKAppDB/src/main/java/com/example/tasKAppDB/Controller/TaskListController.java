@@ -13,13 +13,13 @@ public class TaskListController {
     @Autowired
     TaskListDao dao;
 
-    @GetMapping("/TaskLists")
+    @GetMapping("/TaskLists/getTaskLists")
     public List<TaskList> getTaskLists(){
         return dao.getTaskLists();
     }
 
     @PostMapping("/TaskLists/addTaskList")
-    public TaskList addTaskList(@RequestBody TaskList taskList){
+    public TaskList addTaskgetTaskListsList(@RequestBody TaskList taskList){
         return dao.addTaskList(taskList);
     }
 
