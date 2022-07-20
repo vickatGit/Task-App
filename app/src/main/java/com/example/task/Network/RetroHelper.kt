@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit
 object RetroHelper {
 
     fun getInstance():Retrofit{
-        val okhttp:OkHttpClient=OkHttpClient.Builder().readTimeout(10,TimeUnit.SECONDS).build()
+        val okhttp:OkHttpClient=OkHttpClient.Builder().readTimeout(30,TimeUnit.SECONDS).build()
         return Retrofit.Builder().baseUrl("http://192.168.43.103:8080/TaskLists/")
             .client(okhttp)
             .addConverterFactory(GsonConverterFactory.create()).build()

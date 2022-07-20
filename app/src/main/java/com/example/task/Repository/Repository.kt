@@ -41,4 +41,18 @@ class Repository {
         return allTaskLists
 
     }
+    fun addTaskList(taskLists: TaskLists){
+        retro.addTaskLists(taskLists).enqueue(object :Callback<TaskLists>{
+            override fun onResponse(call: Call<TaskLists>, response: Response<TaskLists>) {
+                Log.d(TAG, "onResponse: TaskList added successfully"+response.errorBody())
+            }
+
+            override fun onFailure(call: Call<TaskLists>, t: Throwable) {
+                Log.d(TAG, "onFailure: Cant add TaskList")
+            }
+
+        })
+
+
+    }
 }

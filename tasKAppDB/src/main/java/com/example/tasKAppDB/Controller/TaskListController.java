@@ -19,7 +19,7 @@ public class TaskListController {
     }
 
     @PostMapping("/TaskLists/addTaskList")
-    public TaskList addTaskgetTaskListsList(@RequestBody TaskList taskList){
+    public TaskList addTaskList(@RequestBody TaskList taskList){
         return dao.addTaskList(taskList);
     }
 

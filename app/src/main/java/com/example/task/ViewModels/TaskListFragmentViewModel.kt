@@ -12,6 +12,7 @@ class TaskListFragmentViewModel : ViewModel() {
     init {
         repo= Repository()
         allTaskLists= repo.getTaskLists() as MutableLiveData<List<TaskLists>>
+//        repo.addTaskList(TaskLists(true,"adding tasklist through retrofit",null,"retro taskList",null))
     }
 
     fun getTaskLists():MutableLiveData<List<TaskLists>>{
