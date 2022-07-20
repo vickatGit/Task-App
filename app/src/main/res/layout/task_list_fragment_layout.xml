@@ -2,9 +2,15 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_marginStart="17dp"
+    android:layout_marginEnd="17dp"
+    app:cardElevation="7dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    app:cardPreventCornerOverlap="false"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="30dp"
-    app:contentPadding="20dp"
+    app:contentPadding="30dp"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,38 +20,46 @@
 
         <TextView
             android:id="@+id/task_list_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:maxWidth="230dp"
+            android:layout_gravity="center"
+            android:maxWidth="200dp"
             android:text="Daily Task"
-            android:textSize="28sp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
+
+            android:textSize="23sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/add_task"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/add_task"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/add_icon"
-            app:tint="#2399ff"
-            android:layout_marginEnd="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/task_list_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/task_list_title" />
+            <ImageView
+                android:id="@+id/add_task"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="12dp"
+                android:layout_gravity="center_vertical"
+
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/add_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/task_list_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/task_list_title"
+                app:tint="#2399ff" />
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/all_tasks"
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"
             android:layout_height="0dp"
-            android:layout_marginStart="20dp"
+
             android:layout_marginEnd="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/task_list_title"/>
+            app:layout_constraintTop_toBottomOf="@+id/task_list_title">
+
+
+        </androidx.recyclerview.widget.RecyclerView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

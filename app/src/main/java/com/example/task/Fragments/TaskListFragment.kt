@@ -1,17 +1,17 @@
 package com.example.task.Fragments
 
-import androidx.lifecycle.ViewModelProvider
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import androidx.lifecycle.Observer
+import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.task.Adapters.TaskListAdapter
+import com.example.task.AddTaskActivity
 import com.example.task.Network.NetworkModels.TaskLists
 import com.example.task.R
 import com.example.task.ViewModels.TaskListFragmentViewModel
@@ -20,8 +20,9 @@ class TaskListFragment : Fragment() {
 
     private lateinit var frameLayout: FrameLayout
     private lateinit var recyclerView: RecyclerView
-    private lateinit var taskLists:MutableList<TaskLists>
-    private lateinit var adapter:TaskListAdapter
+    private lateinit var taskList: TaskLists
+    private lateinit var adapter: TaskListAdapter
+
 
     companion object {
         fun newInstance() = TaskListFragment()
@@ -37,26 +38,29 @@ class TaskListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(TaskListFragmentViewModel::class.java)
-        viewModel.getTaskLists().observe(this.viewLifecycleOwner, Observer { it:List<TaskLists>? ->
-            taskLists.clear()
-            taskLists.addAll(it!!)
-//            Log.d(TAG, "onActivityCreated: "+taskLists.get(0).tasks.get(0).taskName)
-            adapter.notifyDataSetChanged()
-            Log.d("TAG",it.get(0).name)
-        })
+
     }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val bundle: Bundle? =arguments
+        taskList= bundle?.getParcelable<TaskLists>(AllListFragments.TASK_LIST)!!
+
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        taskLists= ArrayList<TaskLists>()
+
         recyclerView=view.findViewById(R.id.all_tasks)
         recyclerView.setLayoutManager(LinearLayoutManager(this.context))
-        adapter=TaskListAdapter(taskLists)
+
+        adapter=TaskListAdapter(taskList)
         recyclerView.adapter=adapter
-
-
-
-
+        val addTask:ImageView=view.findViewById(R.id.add_task)
+        addTask.setOnClickListener {
+            val intent: Intent = Intent(view.context, AddTaskActivity::class.java)
+            startActivity(intent)
+        }
 
 
     }

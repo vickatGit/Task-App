@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.task.Network.NetworkModels.Task
 import com.example.task.Network.NetworkModels.TaskLists
 import com.example.task.R
 
-class TaskListAdapter(val taskLists:List<TaskLists>) : RecyclerView.Adapter<thisViewHolder>() {
+class TaskListAdapter(val taskLists: TaskLists) : RecyclerView.Adapter<thisViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): thisViewHolder {
         val layoutInflater:LayoutInflater= LayoutInflater.from(parent.context)
@@ -25,19 +26,20 @@ class TaskListAdapter(val taskLists:List<TaskLists>) : RecyclerView.Adapter<this
     override fun onBindViewHolder(holder: thisViewHolder, position: Int) {
         Log.d(TAG, "onBindViewHolder: ")
         if(taskLists!=null) {
-            if(taskLists.size>0) {
-                val currentTaskLists: TaskLists = taskLists.get(position)
+            if(taskLists.tasks!!.size>0) {
+                val currentTask: Task = taskLists.tasks.get(position)
 
-                    holder.Task.setText(currentTaskLists.name)
-                    Log.d(TAG, "onBindViewHolder: "+currentTaskLists.name)
+                    holder.Task.setText(currentTask.taskName)
+                    Log.d(TAG, "onBindViewHolder: "+currentTask.taskName)
             }
         }
+
     }
 
     override fun getItemCount(): Int {
 
         if(taskLists!=null) {
-            return taskLists.size
+            return taskLists.tasks!!.size
         }
         else
             return 0
