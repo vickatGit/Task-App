@@ -27,6 +27,7 @@ class TaskListFragment : Fragment() {
     companion object {
         fun newInstance() = TaskListFragment()
         private val TAG="tag"
+        public val TASK_LIST_PARSER="task_list_parser"
     }
 
     private lateinit var viewModel: TaskListFragmentViewModel
@@ -59,6 +60,9 @@ class TaskListFragment : Fragment() {
         val addTask:ImageView=view.findViewById(R.id.add_task)
         addTask.setOnClickListener {
             val intent: Intent = Intent(view.context, AddTaskActivity::class.java)
+            val bundle:Bundle= Bundle()
+            bundle.putParcelable(TASK_LIST_PARSER,taskList)
+            intent.putExtra(TASK_LIST_PARSER,bundle)
             startActivity(intent)
         }
 

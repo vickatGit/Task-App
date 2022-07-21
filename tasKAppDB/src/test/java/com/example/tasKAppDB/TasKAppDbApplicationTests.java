@@ -25,8 +25,8 @@ class TasKAppDbApplicationTests {
 	void addTaskList(){
 		TaskList taskList=new TaskList("TaskList 1","Description of TaskList 1",true);
 		List<Task> tasks=new ArrayList<>();
-		tasks.add(new Task(taskList,"task1","description 1",new Date(),"month","monthly"));
-		tasks.add(new Task(taskList,"task2","description 2",new Date(),"month","monthly"));
+		tasks.add(new Task(taskList,"task1","description 1",new Date().toString(),"month","monthly"));
+		tasks.add(new Task(taskList,"task2","description 2",new Date().toString(),"month","monthly"));
 		taskList.setTasks(tasks);
 		taskListDao.addTaskList(taskList);
 

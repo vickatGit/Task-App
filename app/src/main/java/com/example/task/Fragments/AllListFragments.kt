@@ -64,6 +64,7 @@ class AllListFragments : Fragment() {
             childFragmentManager.beginTransaction().replace(taskListFrameLayout.id,taskListFragment).commit()
 //            fragments_container.removeAllViews()
             fragments_container.addView(taskListFrameLayout)
+
         }
 //        frameLayout_container.removeAllViews()
         Log.d(TAG, "refreshDataSet: ")

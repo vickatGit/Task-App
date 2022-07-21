@@ -20,6 +20,7 @@ public class TaskListController {
 
     @PostMapping("/TaskLists/addTaskList")
     public TaskList addTaskList(@RequestBody TaskList taskList){
+        System.out.println(taskList.toString());
         return dao.addTaskList(taskList);
     }
 
@@ -41,11 +42,15 @@ public class TaskListController {
 
     @PostMapping("/TaskLists/addTask")
     public Task addTask(@RequestBody Task task){
+        System.out.println("-------------------------ADD TASK------------------------------------------");
+        System.out.println(task.toString());
+        System.out.println("-------------------------ADD TASK------------------------------------------");
         return dao.addTask(task);
     }
 
     @GetMapping("/TaskLists/Tasks")
     public List<Task> getTasks(){
+
         return dao.getTasks();
     }
 

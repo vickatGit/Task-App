@@ -14,7 +14,7 @@ public interface TaskRepo extends  JpaRepository<Task, Integer> {
 
     public List<Task> findByPeriod(String period);
 
-    @Query("SELECT t FROM Task t INNER JOIN t.taskl l WHERE l.list_id=:listId")
+    @Query("SELECT t FROM Task t INNER JOIN t.taskList l WHERE l.list_id=:listId")
     public List<Task> findTasksByListId(@Param("listId") Integer listId);
 
 

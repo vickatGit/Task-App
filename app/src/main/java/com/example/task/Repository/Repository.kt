@@ -3,6 +3,7 @@ package com.example.task.Repository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.task.Network.NetworkModels.Task
 import com.example.task.Network.NetworkModels.TaskLists
 import com.example.task.Network.RetroHelper
 import com.example.task.Network.TaskRetro
@@ -54,5 +55,18 @@ class Repository {
         })
 
 
+    }
+
+    fun addTask(task: Task) {
+        retro.addTask(task).enqueue(object :Callback<Task>{
+            override fun onResponse(call: Call<Task>, response: Response<Task>) {
+                Log.d(TAG, "onResponse: adding Task Successfully completed"+response.body())
+            }
+
+            override fun onFailure(call: Call<Task>, t: Throwable) {
+                Log.d(TAG, "onFailure: failed to add Task"+t.localizedMessage)
+            }
+
+        })
     }
 }

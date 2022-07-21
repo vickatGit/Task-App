@@ -1,5 +1,6 @@
 package com.example.task.Network
 
+import com.example.task.Network.NetworkModels.Task
 import com.example.task.Network.NetworkModels.TaskLists
 import com.google.gson.Gson
 import retrofit2.Call
@@ -16,4 +17,7 @@ interface TaskRetro {
 
     @POST("addTaskList")
     fun addTaskLists(@Body taskLists: TaskLists):Call<TaskLists>
+
+    @POST("addTask")
+    fun addTask(@Body task: Task):Call<Task>
 }

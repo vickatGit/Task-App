@@ -1,6 +1,7 @@
 package com.example.tasKAppDB.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,26 +13,27 @@ public class Task {
     Integer taskId;
     String taskName;
     String description;
+    @JsonFormat(pattern = "dd MMM yyyy HH:mm:ss zzz")
     Date dueDate;
     String period;
     String periodType;
     @ManyToOne
     @JoinColumn(name = "list_id")
-    TaskList taskl;
+    TaskList taskList;
 
     @JsonBackReference
-    public TaskList getTaskl() {
-        return taskl;
+    public TaskList getTaskList() {
+        return taskList;
     }
 
-    public void setTaskl(TaskList taskl) {
-        this.taskl = taskl;
+    public void setTaskList(TaskList taskList) {
+        this.taskList = taskList;
     }
 
 
 
     public Task( TaskList tasklist,String taskName, String description, Date dueDate, String period, String periodType) {
-        this.taskl =tasklist;
+        this.taskList =tasklist;
         this.taskName = taskName;
         this.description = description;
         this.dueDate = dueDate;
@@ -58,14 +60,16 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
+        String whlestr="Task{" +
                 "taskId=" + taskId +
                 ", taskName='" + taskName + '\'' +
                 ", description='" + description + '\'' +
                 ", dueDate=" + dueDate +
                 ", period='" + period + '\'' +
                 ", periodType='" + periodType + '\'' +
-                '}';
+//                ", task='" + taskl.toString() + '\'' +
+                '}'+ taskList.toString();
+        return whlestr;
     }
 
     public Integer getTaskId() {

@@ -15,7 +15,7 @@
 
     <TextView
         android:id="@+id/task"
-        android:layout_width="wrap_content"
+        android:layout_width="256dp"
         android:layout_height="wrap_content"
         android:text="some task"
         android:textSize="22sp"

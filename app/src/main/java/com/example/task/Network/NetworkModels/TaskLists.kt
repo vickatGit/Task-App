@@ -9,7 +9,7 @@ import java.lang.reflect.Constructor
 data class TaskLists(
     val active: Boolean,
     val description: String,
-    val list_id: Int?,
+    var list_id: Int?,
     val name: String,
     val tasks: List<Task>?
 

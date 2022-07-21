@@ -14,7 +14,7 @@ public class TaskList {
     String description;
     boolean isActive;
 
-    @OneToMany(mappedBy = "taskl",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "taskList",cascade = CascadeType.ALL,orphanRemoval = true)
     List<Task> tasks;
 
     @JsonManagedReference
