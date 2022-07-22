@@ -28,6 +28,7 @@ class TaskListAdapter(val taskLists: TaskLists) : RecyclerView.Adapter<thisViewH
         if(taskLists!=null) {
             if(taskLists.tasks!!.size>0) {
                 val currentTask: Task = taskLists.tasks.get(position)
+//                Log.d(TAG, "onBindViewHolder: ")
 
                     holder.Task.setText(currentTask.taskName)
                     Log.d(TAG, "onBindViewHolder: "+currentTask.taskName)

@@ -123,8 +123,4 @@ class AddTaskActivity : AppCompatActivity() {
 @Parcelize
 class dateValidator:CalendarConstraints.DateValidator{
     override fun isValid(date: Long): Boolean = date>=System.currentTimeMillis()
-
-
-
-
 }
