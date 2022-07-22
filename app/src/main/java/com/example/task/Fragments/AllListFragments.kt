@@ -50,8 +50,10 @@ class AllListFragments : Fragment() {
     private fun refreshDataSet(taskLists: MutableList<TaskLists>) {
 
         val fragments_container:LinearLayout=LinearLayout(this.context)
+        fragments_container.layoutParams=ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT)
 
         for (taskList in taskLists){
+
 
             val taskListFrameLayout:FrameLayout=FrameLayout(this.requireContext())//requireContext return non-null context
             taskListFrameLayout.layoutParams= ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT)
@@ -64,6 +66,7 @@ class AllListFragments : Fragment() {
             childFragmentManager.beginTransaction().replace(taskListFrameLayout.id,taskListFragment).commit()
 //            fragments_container.removeAllViews()
             fragments_container.addView(taskListFrameLayout)
+
 
         }
 //        frameLayout_container.removeAllViews()
