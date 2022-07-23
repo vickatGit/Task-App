@@ -1,10 +1,23 @@
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-        jcenter() // Warning: this repository is going to shut down soon
-    }
-}
-rootProject.name = "Task"
-include ':app'
+//{
+//  "$schema": "https://json.schemastore.org/schema-catalog.json",
+//  "schemas": [
+//    {
+//      "name": "Common types for all schemas",
+//      "description": "",
+//      "fileMatch": [],
+//      "url": "https://json.schemastore.org/base.json"
+//    },
+//    {
+//      "name": "AnyWo
+
+
+        dependencyResolutionManagement {
+            repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+            repositories {
+                google()
+                mavenCentral()
+                jcenter() // Warning: this repository is going to shut down soon
+            }
+        }
+        rootProject.name = "Task"
+        include ':app'

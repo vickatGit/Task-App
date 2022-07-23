@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Task">
         <activity
+            android:name=".TaskListViewerActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddTaskActivity"
             android:exported="false" />
         <activity
