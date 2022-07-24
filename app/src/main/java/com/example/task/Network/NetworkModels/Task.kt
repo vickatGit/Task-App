@@ -1,6 +1,7 @@
 package com.example.task.Network.NetworkModels
 
 import android.os.Parcelable
+import androidx.annotation.Nullable
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.parcel.RawValue
 import java.util.*
@@ -12,7 +13,9 @@ data class Task(
     val dueDate: String,
     val period: String,
     val periodType: String,
+    @Nullable
     val taskId: Int?,
     val taskName: String,
-    val taskList:TaskLists
+    @Nullable
+    val taskList:TaskLists?
 ) : Parcelable

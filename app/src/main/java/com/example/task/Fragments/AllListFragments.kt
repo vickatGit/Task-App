@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -26,6 +27,7 @@ class AllListFragments : Fragment() {
     private lateinit var taskLists:ArrayList<TaskLists>
     private lateinit var adapter: TaskListAdapter
     private lateinit var frameLayout_container:LinearLayout
+    private lateinit var addtaskList:ImageView
 
     companion object {
         public val TAG="tag"
@@ -59,8 +61,11 @@ class AllListFragments : Fragment() {
             taskListFragment.arguments=bundle
             taskListFrameLayout.id=View.generateViewId()
             taskListFrameLayout.setOnClickListener{
+                val bundle:Bundle= Bundle()
+                bundle.putParcelable(TASK_LIST_CONTAINER,taskList)
                 val intent:Intent=Intent(this.context,TaskListViewerActivity::class.java)
                 intent.putExtra(TASK_LIST_CONTAINER,bundle)
+                Log.d(TAG, "refreshDataSet: "+taskList.toString())
                 startActivity(intent)
             }
 
@@ -88,12 +93,18 @@ class AllListFragments : Fragment() {
         taskLists= ArrayList<TaskLists>()
         frameLayout_container=view.findViewById(R.id.fragment_container)
         viewModel=ViewModelProvider(this).get(TaskListFragmentViewModel::class.java)
+        addtaskList=view.findViewById(R.id.add_task_list)
         viewModel.getTaskLists().observe(this.viewLifecycleOwner, Observer { it:List<TaskLists>? ->
             taskLists.clear()
             taskLists.addAll(it!!)
 
             refreshDataSet(taskLists)
         })
+
+        addtaskList.setOnClickListener{
+            val intent:Intent=Intent(this.context,TaskListViewerActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }
