@@ -1,5 +1,6 @@
 package com.example.task.Fragments
 
+import android.content.Intent
 import android.content.res.Resources
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
@@ -16,13 +17,8 @@ import androidx.lifecycle.get
 import com.example.task.Adapters.TaskListAdapter
 import com.example.task.Network.NetworkModels.TaskLists
 import com.example.task.R
+import com.example.task.TaskListViewerActivity
 import com.example.task.ViewModels.TaskListFragmentViewModel
-import kotlin.math.log
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 class AllListFragments : Fragment() {
 
@@ -34,6 +30,7 @@ class AllListFragments : Fragment() {
     companion object {
         public val TAG="tag"
         public val TASK_LIST="task_list"
+        public val TASK_LIST_CONTAINER="task_list"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,23 +50,25 @@ class AllListFragments : Fragment() {
         fragments_container.layoutParams=ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT)
 
         for (taskList in taskLists){
-
-
-            val taskListFrameLayout:FrameLayout=FrameLayout(this.requireContext())//requireContext return non-null context
-            taskListFrameLayout.layoutParams= ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT)
             val taskListFragment:Fragment=TaskListFragment()
             val bundle:Bundle= Bundle()
-            
+            val taskListFrameLayout:FrameLayout=FrameLayout(this.requireContext())//requireContext return non-null context
+
+            taskListFrameLayout.layoutParams= ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT)
             bundle.putParcelable(TASK_LIST,taskList)
             taskListFragment.arguments=bundle
             taskListFrameLayout.id=View.generateViewId()
+            taskListFrameLayout.setOnClickListener{
+                val intent:Intent=Intent(this.context,TaskListViewerActivity::class.java)
+                intent.putExtra(TASK_LIST_CONTAINER,bundle)
+                startActivity(intent)
+            }
+
             childFragmentManager.beginTransaction().replace(taskListFrameLayout.id,taskListFragment).commit()
-//            fragments_container.removeAllViews()
             fragments_container.addView(taskListFrameLayout)
 
 
         }
-//        frameLayout_container.removeAllViews()
         Log.d(TAG, "refreshDataSet: ")
         frameLayout_container.addView(fragments_container)
 
