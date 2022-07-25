@@ -68,7 +68,7 @@ public class Task {
                 ", period='" + period + '\'' +
                 ", periodType='" + periodType + '\'' +
 //                ", task='" + taskl.toString() + '\'' +
-                '}'+ taskList.toString();
+                '}';
         return whlestr;
     }
 
