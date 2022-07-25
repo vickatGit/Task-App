@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.task.Adapters.TaskListAdapter
@@ -22,6 +23,7 @@ class TaskListFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var taskList: TaskLists
     private lateinit var adapter: TaskListAdapter
+    private lateinit var taskListName: TextView
 
 
     companion object {
@@ -54,8 +56,10 @@ class TaskListFragment : Fragment() {
 
         recyclerView=view.findViewById(R.id.all_tasks)
         recyclerView.setLayoutManager(LinearLayoutManager(this.context))
+        taskListName=view.findViewById(R.id.task_list_name)
+        taskListName.setText(taskList.name)
 
-        adapter=TaskListAdapter(taskList)
+        adapter=TaskListAdapter(taskList, this.requireContext())
         recyclerView.adapter=adapter
         val addTask:ImageView=view.findViewById(R.id.add_task)
         addTask.setOnClickListener {
