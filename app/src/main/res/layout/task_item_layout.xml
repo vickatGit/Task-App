@@ -15,13 +15,13 @@
 
     <TextView
         android:id="@+id/task"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:maxWidth="350dp"
         android:text="some task"
         android:textSize="22sp"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/checkBox"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/checkBox"
         app:layout_constraintTop_toTopOf="@+id/checkBox" />
 
