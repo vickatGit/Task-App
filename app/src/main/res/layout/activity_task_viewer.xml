@@ -10,9 +10,12 @@
     <TextView
         android:id="@+id/task_name"
         android:layout_width="0dp"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:text="Task Name"
-        android:textSize="28sp"
+        android:textSize="44sp"
+        android:textColor="@color/black"
+        android:padding="10dp"
         app:layout_constraintEnd_toStartOf="@+id/date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,8 +24,11 @@
         android:id="@+id/task_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:hint="Description"
         android:lines="15"
+        android:textSize="20sp"
+        android:text="Description"
         app:layout_constraintTop_toBottomOf="@+id/task_name" />
 
     <TextView
@@ -30,6 +36,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="25/03/2023"
+        android:textSize="14sp"
+        android:padding="3dp"
         app:layout_constraintBottom_toBottomOf="@+id/task_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/task_name" />
@@ -39,6 +47,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="28 Days"
+        android:textSize="18sp"
+        android:padding="7dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/task_description" />
 
@@ -46,7 +57,10 @@
         android:id="@+id/remaining_period"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="18sp"
         android:text="25 Days"
+        android:padding="7dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/period" />
 

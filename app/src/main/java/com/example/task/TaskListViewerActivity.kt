@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.task.Adapters.TaskListAdapter
 import com.example.task.Fragments.AllListFragments
 import com.example.task.Network.NetworkModels.TaskLists
+import java.text.SimpleDateFormat
 
 class TaskListViewerActivity : AppCompatActivity() {
 
@@ -30,7 +31,8 @@ class TaskListViewerActivity : AppCompatActivity() {
         taskListName=findViewById(R.id.task_list_name)
         recyclerView.layoutManager=LinearLayoutManager(this)
         val bundle: Bundle? =intent.getBundleExtra(AllListFragments.TASK_LIST_CONTAINER)
-//         bundle?.getParcelable<TaskLists>(AllListFragments.TASK_LIST)
+
+
 
         if(bundle!=null){
             val taskList: TaskLists? =bundle.getParcelable<TaskLists>(AllListFragments.TASK_LIST_CONTAINER)

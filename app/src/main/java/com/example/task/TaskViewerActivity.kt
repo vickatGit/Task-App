@@ -3,9 +3,13 @@ package com.example.task
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import com.example.task.Adapters.TaskListAdapter
 import com.example.task.Network.NetworkModels.Task
+import java.sql.Time
+import java.text.SimpleDateFormat
+import java.util.*
 
 class TaskViewerActivity : AppCompatActivity() {
 
@@ -14,6 +18,10 @@ class TaskViewerActivity : AppCompatActivity() {
     private lateinit var date:TextView
     private lateinit var period:TextView
     private lateinit var remainingPeriod:TextView
+
+    companion object{
+        private val TAG="tag"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,12 +32,17 @@ class TaskViewerActivity : AppCompatActivity() {
         date=findViewById(R.id.date)
         period=findViewById(R.id.period)
         remainingPeriod=findViewById(R.id.remaining_period)
+
+
         var bundle:Bundle= intent.getBundleExtra(TaskListAdapter.TASK_PARSER)!!
         val task: Task? =bundle.getParcelable<Task>(TaskListAdapter.TASK_PARSER)
+
         taskName.setText(task?.taskName)
         description.setText(task?.description)
-        date.setText(task?.dueDate)
-        period.setText(task?.period)
-        remainingPeriod.setText(task?.periodType)
+
+        date.setText(SimpleDateFormat("dd/MM/yy").format(Date(task?.dueDate)))
+        period.setText("Total Period : "+task?.period)
+        remainingPeriod.setText("Remaining Period : "+((Date(task?.dueDate).time/(24*60*60*1000))- Date().time/(24*60*60*1000)))
+        Log.d(TAG, "onCreate: days"+(Date(task?.dueDate).time/(24*60*60*1000)))
     }
 }
