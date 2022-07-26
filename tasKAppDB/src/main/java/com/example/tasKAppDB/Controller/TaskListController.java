@@ -56,6 +56,7 @@ public class TaskListController {
 
     @GetMapping("/TaskLists/deleteTask/{task_id}")
     public void deleteTask(@PathVariable("task_id") String task_id){
+    	System.out.println(task_id);
         dao.deleteTask(task_id);
     }
 

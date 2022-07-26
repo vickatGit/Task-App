@@ -7,7 +7,6 @@ import com.example.task.Network.NetworkModels.Task
 import com.example.task.Network.NetworkModels.TaskLists
 import com.example.task.Network.RetroHelper
 import com.example.task.Network.TaskRetro
-import okhttp3.RequestBody
 import retrofit2.*
 
 class Repository {
@@ -67,6 +66,18 @@ class Repository {
                 Log.d(TAG, "onFailure: failed to add Task"+t.localizedMessage)
             }
 
+        })
+    }
+
+    fun deleteTask(task_id: Int) {
+        retro.deleteTask(task_id).enqueue(object:Callback<Void>{
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                Log.d(TAG, "onResponse: "+response.message())
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Log.d(TAG, "onFailure: "+t.localizedMessage)
+            }
         })
     }
 }

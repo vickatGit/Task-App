@@ -64,6 +64,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/period" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/delete_task"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:text="Delete Task"
+        android:textStyle="bold"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/remaining_period" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

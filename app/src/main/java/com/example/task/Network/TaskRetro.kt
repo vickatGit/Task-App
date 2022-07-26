@@ -10,6 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface TaskRetro {
     @GET("getTaskLists")
@@ -20,4 +21,7 @@ interface TaskRetro {
 
     @POST("addTask")
     fun addTask(@Body task: Task):Call<Task>
+
+    @GET("deleteTask/{task_id}")
+    fun deleteTask(@Path("task_id") task_id : Int):Call<Void>
 }
